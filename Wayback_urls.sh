@@ -107,10 +107,10 @@ if [[ "$TOTAL_RAW" -eq 0 ]]; then
 fi
 
 # Step 2: Run httpx for 200, 301, 302, 403
-echo -e "${BLUE}[*] Running httpx (Status codes: 200, 301, 302, 403)...${RESET}"
+echo -e "${BLUE}[*] Running httpx (Status codes: 200, 301, 302, 403, 500)...${RESET}"
 
 # HTTPX arguments safely stored in an array to avoid breaking syntax
-HTTPX_ARGS=(-l "$RAW_URLS" -mc 200,301,302,403 -silent -threads 150 -rl 1500 -follow-redirects=false -o "$FILTERED_HTTPX")
+HTTPX_ARGS=(-l "$RAW_URLS" -mc 200,301,302,403,500 -silent -threads 150 -rl 1500 -follow-redirects=false -o "$FILTERED_HTTPX")
 
 # Check if cookie file is passed and exists, then parse it and add to array
 if [[ -n "$COOKIE_FILE" && -f "$COOKIE_FILE" ]]; then
